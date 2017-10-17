@@ -1,6 +1,7 @@
 # Site for the Mood
 
-[TODO. There will be project description]
+URL of site is
+https://erlong15.github.io/20_mood/
 
 # Project Goals
 

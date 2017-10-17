@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>Настроение</title>
-  <script id="quotes_json" type="application/json">
-    [
+
+  <script id="quotesJson" type="application/json" charset="UTF-8">
+     [
       {
         "phrase": "Кукурузные хлопья - теперь без асбеста!",
         "signature": "©Неизвестный маркетолог"
@@ -21,5 +23,27 @@
   </script>
 </head>
 <body>
+<div align="center" id="phraseBanner">
+
+</div>
+
+<script id="phraseTemplate" type="text/template">
+  <h1>{phrase} </h1>
+  <h2 align="right"> {signature} </h2>
+</script>
+
+<script charset="UTF-8">
+  Array.prototype.sample = function(){
+    return this[Math.floor(Math.random()*this.length)];
+  }
+ var phrases_json = document.getElementById('quotesJson');
+ var phrase_banner = document.getElementById('phraseBanner');
+ var phrase_template = document.getElementById('phraseTemplate');
+ var phrase = JSON.parse(phrases_json.innerHTML).sample();
+ phrase_banner.innerHTML = phrase_template.innerHTML.
+                                           replace('{phrase}', phrase['phrase']).
+                                           replace('{signature}', phrase['signature'] || '')
+
+</script>
 </body>
 </html>
