@@ -3,7 +3,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>Настроение</title>
-
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://fastcdn.org/Underscore.js/1.8.3/underscore-min.js"></script>  
   <script id="quotesJson" type="application/json" charset="UTF-8">
      [
       {
@@ -14,7 +15,7 @@
         "phrase": "Собираюсь жить вечно, пока всё идёт нормально"
       },
       {
-        "phrase": "Вывеска над кафе — '\u003cМы открылись\u003e'. Что-то не так. Где же '\u003c/Мы открылись\u003e'?"
+        "phrase": "Вывеска над кафе — <br><b>'\u003cМы открылись\u003e'.</b><br> Что-то не так. Где же <br><b>'&lt;\/Мы открылись&gt;'</b>?"
       },
       {
         "phrase": "Если ты будешь усердно работать по 8 часов в день, то обязательно станешь боссом и начнешь работать по 12"
@@ -23,8 +24,10 @@
   </script>
 </head>
 <body>
-<div align="center" id="phraseBanner">
 
+<div class="row">
+    <div class="center-block" style="width:50%;padding:100px;margin-top:50px;background-color:#acc;text-align:center;" id="phraseBanner">
+    </div>
 </div>
 
 <script id="phraseTemplate" type="text/template">
@@ -33,13 +36,10 @@
 </script>
 
 <script charset="UTF-8">
-  Array.prototype.sample = function(){
-    return this[Math.floor(Math.random()*this.length)];
-  }
  var phrases_json = document.getElementById('quotesJson');
  var phrase_banner = document.getElementById('phraseBanner');
  var phrase_template = document.getElementById('phraseTemplate');
- var phrase = JSON.parse(phrases_json.innerHTML).sample();
+ var phrase = _.sample(JSON.parse(phrases_json.innerHTML));
  phrase_banner.innerHTML = phrase_template.innerHTML.
                                            replace('{phrase}', phrase['phrase']).
                                            replace('{signature}', phrase['signature'] || '')
